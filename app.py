@@ -7,7 +7,7 @@ model_id = "gpt-3.5-turbo"
 # Read API key from config.toml
 
 # Set up OpenAI API
-openai.api_key = st.secrets['API_KEY']
+openai.api_key = st.secrets['API']
 
 st.set_page_config(page_title="Dungeon and Dragons", page_icon=":crossed_swords:")
 
