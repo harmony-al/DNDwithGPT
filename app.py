@@ -62,7 +62,7 @@ def app():
     if user_input:
             st.session_state.prompt.append({"role": "user", "content": user_input})
             with st.spinner("Dungeon Master is thinkking..."):
-                time.sleep(3)
+                time.sleep(2)
                 
             
             
