@@ -26,7 +26,7 @@ st.markdown("""
 
 
 # Define function for rolling d20
-def roll_d20():
+#def roll_d20():
     roll = random.randint(1, 20)
     return roll
 
@@ -62,7 +62,7 @@ def app():
 
 
      # Get user input and update chat
-    user_input = st.text_input("Player:",key='input_field',on_change=True)
+    user_input = st.text_input("Player:",key='input_field')
     # styled_input = f'<span style="color:black;font-weight:bold">{user_input}</span>'
     # st.markdown(styled_input, unsafe_allow_html=True)
     if user_input:
@@ -75,7 +75,7 @@ def app():
             chat = openai.ChatCompletion.create(model=model_id, messages=st.session_state.prompt)
             st.session_state.prompt.append({"role": chat.choices[0].message.role, "content": chat.choices[0].message.content})
     # Display button for rolling d20
-    if st.button("Roll d20"):
+    #if st.button("Roll d20"):
         roll = roll_d20()
         st.write(f"You rolled a {roll}!")     
 
