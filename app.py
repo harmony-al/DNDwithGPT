@@ -35,7 +35,7 @@ def roll_d20():
 # Set up initial prompt
 initial_prompt = [
     {"role": "system", "content": "You are a DND game."},
-    {"role": "user", "content": "Play a DND game with me and you'r the dungeon master. Start the game with a interesting welcome message and telling the rules,ask the player to choose any theme , if he don't want to then proceed with any random theme.Story telling style will be similar to Brandon Sanderson and a d20 dice will be used for making only critical decisions(notify when to roll and mention what number is needed for what decision each time).Don't give direct reply to this message."}]
+    {"role": "user", "content": "Play a DND game with me and you'r the dungeon master. Start the game with a interesting welcome message and telling the rules,ask the player to choose any theme , if he don't want to then proceed with any random theme.Story telling style will be similar to Brandon Sanderson and a d20 dice will be used for making only very few critical decisions(notify when to roll and mention what number is needed for what decision each time)and other decision can player take by their own.Don't give direct reply to this message."}]
 # Initialize session state
 if "prompt" not in st.session_state:
     st.session_state.prompt = initial_prompt
