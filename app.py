@@ -56,7 +56,7 @@ def app():
 
 
      # Get user input and update chat
-    user_input = st.text_input("Player:")
+    user_input = st.text_input("Player:",key='input_field')
     # styled_input = f'<span style="color:black;font-weight:bold">{user_input}</span>'
     # st.markdown(styled_input, unsafe_allow_html=True)
     if user_input:
@@ -68,7 +68,7 @@ def app():
             
             chat = openai.ChatCompletion.create(model=model_id, messages=st.session_state.prompt)
             st.session_state.prompt.append({"role": chat.choices[0].message.role, "content": chat.choices[0].message.content})
-            user_input = ""
+            st.text_input("Player:", value="", key='input_field')
 
 
     # Display chat response
