@@ -68,8 +68,7 @@ def app():
             
             chat = openai.ChatCompletion.create(model=model_id, messages=st.session_state.prompt)
             st.session_state.prompt.append({"role": chat.choices[0].message.role, "content": chat.choices[0].message.content})
-            st.text_input("Player:", value="", key="user_input")
-
+            user_input = ""
 
 
     # Display chat response
