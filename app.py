@@ -63,7 +63,7 @@ def app():
 
 
      # Get user input and update chat
-     with st.form(key='myform',clear_on_submit=True):
+    with st.form(key='myform',clear_on_submit=True):
          user_input = st.text_input("Player:")
          submit_button =st.form_submit_button('ENTER')
         
