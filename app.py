@@ -27,6 +27,9 @@ st.markdown("""
 
 # Define function for rolling d20
 
+def roll_d20():
+    roll = random.randint(1, 20)
+    return str(roll)  
 
 
 # Set up initial prompt
@@ -60,23 +63,39 @@ def app():
 
 
      # Get user input and update chat
-    user_input = st.text_input("Player:",key='input_field')
+with st.form(key='myform',clear_on_submit=True):
+         user_input = st.text_input("Player:")
+         submit_button =st.form_submit_button('ENTER')
+        
     # styled_input = f'<span style="color:black;font-weight:bold">{user_input}</span>'
     # st.markdown(styled_input, unsafe_allow_html=True)
-    if user_input:
+         if submit_button:
             st.session_state.prompt.append({"role": "user", "content": user_input})
             with st.spinner("Dungeon Master is thinkking..."):
-                time.sleep(2)
+                time.sleep(3)
                 
             
             
             chat = openai.ChatCompletion.create(model=model_id, messages=st.session_state.prompt)
             st.session_state.prompt.append({"role": chat.choices[0].message.role, "content": chat.choices[0].message.content})
-    # Display button for rolling d20
          
+    if st.button('Roll D20'):
+            roll_data = roll_d20()   
+            st.session_state.prompt.append({"role": "user", "content": roll_data})
+            with st.spinner("Dungeon Master is thinkking..."):
+                time.sleep(1)         
+            
+            
+            chat = openai.ChatCompletion.create(model=model_id, messages=st.session_state.prompt)
+            st.session_state.prompt.append({"role": chat.choices[0].message.role, "content": chat.choices[0].message.content})   
+          
+    
+
+
 
     # Display chat response
     st.write("Dungeon Master: " + st.session_state.prompt[-1]["content"].strip())
+
 
 # Run Streamlit app
 if __name__ == "__main__":
