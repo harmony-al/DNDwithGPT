@@ -79,7 +79,7 @@ with st.form(key='myform',clear_on_submit=True):
             chat = openai.ChatCompletion.create(model=model_id, messages=st.session_state.prompt)
             st.session_state.prompt.append({"role": chat.choices[0].message.role, "content": chat.choices[0].message.content})
          
-    if st.button('Roll D20'):
+     if st.button('Roll D20'):
             roll_data = roll_d20()   
             st.session_state.prompt.append({"role": "user", "content": roll_data})
             with st.spinner("Dungeon Master is thinkking..."):
