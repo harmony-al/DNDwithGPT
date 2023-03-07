@@ -62,7 +62,7 @@ def app():
 
 
      # Get user input and update chat
-    user_input = st.text_input("Player:",key='input_field')
+    user_input = st.text_input("Player:",key='input_field',on_change=True)
     # styled_input = f'<span style="color:black;font-weight:bold">{user_input}</span>'
     # st.markdown(styled_input, unsafe_allow_html=True)
     if user_input:
