@@ -1,6 +1,9 @@
 import openai
 import streamlit as st
 import time
+import random
+
+
 
 model_id = "gpt-3.5-turbo"
 
@@ -22,7 +25,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-
+# Define function for rolling d20
+def roll_d20():
+    roll = random.randint(1, 20)
+    return roll
 
 
 # Set up initial prompt
@@ -68,7 +74,10 @@ def app():
             
             chat = openai.ChatCompletion.create(model=model_id, messages=st.session_state.prompt)
             st.session_state.prompt.append({"role": chat.choices[0].message.role, "content": chat.choices[0].message.content})
-            
+    # Display button for rolling d20
+    if st.button("Roll d20"):
+        roll = roll_d20()
+        st.write(f"You rolled a {roll}!")     
 
     # Display chat response
     st.write("Dungeon Master: " + st.session_state.prompt[-1]["content"].strip())
